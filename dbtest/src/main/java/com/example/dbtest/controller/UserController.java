@@ -26,7 +26,9 @@ public class UserController {
     @GetMapping("/insert")
     @ResponseBody
     public String insert( Model model){
-        studentRepository.save( new Student(null,"홍길동",20)); //student table insert
+        // studentRepository.save( new Student(null,"홍길동",20)); //student table insert
+        studentRepository.save( new Student(null,"이순신",30)); //student table insert
+
         return "수정됨";
     }
 
