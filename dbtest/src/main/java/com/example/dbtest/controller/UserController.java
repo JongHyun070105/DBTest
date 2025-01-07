@@ -41,8 +41,39 @@ public class UserController {
     
     @GetMapping("/find")
     public String find( Model model){
-        Student std = studentRepository.findByName("홍길동");
+        List<Student> std = studentRepository.findByName("홍길동");
         model.addAttribute("std", std);
         return "find";
+    }
+
+    // @GetMapping("/or")
+    // public String or( Model model){
+    //     List<Student> std = studentRepository.findByAgeOrName(30,"홍길동");
+    //     model.addAttribute("std", std);
+    //     return "or";
+    // }
+
+    @GetMapping("/del")
+    @ResponseBody
+    public String del( Model model){
+        Student student = studentRepository.findById(1L).orElse(null);
+        if(student != null){
+            studentRepository.delete(student);
+        }
+        model.addAttribute("student", student );
+        return "삭제됨";
+    }
+
+    @GetMapping("/update")
+    @ResponseBody
+    public String update( Model model){
+        Student student = studentRepository.findById(2L).orElse(null);
+        if(student != null){
+            student.setName("이순신 1");
+            student.setAge(31);
+            studentRepository.save(student);
+        }
+        model.addAttribute("student", student );
+        return "수정됨";
     }
 }
