@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Rankings</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>Movie Rankings</h1>
+    <div class="movie-container">
+        <div th:each="movie : ${movies}" class="movie">
+            <a th:href="@{/movie/{id}(id=${movie.id})}">
+                <img th:src="${movie.poster}" alt="Poster" class="poster">
+                <div>
+                    <h2 th:text="${movie.title}"></h2>
+                    <p><strong>Date:</strong> <span th:text="${movie.date}"></span></p>
+                    <p><strong>Actor:</strong> <span th:text="${movie.actor}"></span></p>
+                    <p><strong>Director:</strong> <span th:text="${movie.director}"></span></p>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

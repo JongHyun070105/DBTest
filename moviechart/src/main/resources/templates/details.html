@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${movie.title}">Movie Details</title>
+    <link rel="stylesheet" href="/css/details.css">
+</head>
+<body>
+<div class="details-wrap">
+    <div class="details-header">
+        <h1 th:text="${movie.title}"></h1>
+    </div>
+    <div class="details-content">
+        <img th:src="${movie.poster}" alt="Poster" class="poster">
+        <div class="details-info">
+            <p><strong>Director:</strong> <span th:text="${movie.director}"></span></p>
+            <p><strong>Release Date:</strong> <span th:text="${movie.date}"></span></p>
+            <p><strong>Cast:</strong> <span th:text="${movie.actor}"></span></p>
+        </div>
+    </div>
+    <div class="details-footer">
+        <a href="/" class="back-button">Back to Rankings</a>
+    </div>
+</div>
+</body>
+</html>
