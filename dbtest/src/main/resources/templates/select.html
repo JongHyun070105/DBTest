@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li th:each = "student : ${students}">
+            <span th:text="${student.name}"></span>
+            <span th:text="${student.age}"></span>
+        </li>
+    </ul>
+</body>
+</html>
