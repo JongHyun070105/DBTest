@@ -46,12 +46,12 @@ public class UserController {
         return "find";
     }
 
-    // @GetMapping("/or")
-    // public String or( Model model){
-    //     List<Student> std = studentRepository.findByAgeOrName(30,"홍길동");
-    //     model.addAttribute("std", std);
-    //     return "or";
-    // }
+    @GetMapping("/or")
+    public String or( Model model){
+        List<Student> std = studentRepository.findByAgeOrName(30,"홍길동");
+        model.addAttribute("std", std);
+        return "or";
+    }
 
     @GetMapping("/del")
     @ResponseBody
