@@ -12,7 +12,6 @@ import com.example.dbtest.model.Student;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long>{
     List<Student> findByName(String name);
-
-    // @Query("SELECT p FROM Student p WHERE p.age== :age OR p.name = :name")
-    // List<Student> findByAgeOrName(@Param("age") int age, @Param("name") String name);
+    @Query("SELECT s FROM Student s WHERE s.age = :age OR s.name = :name")
+    List<Student> findByAgeOrName(@Param("age") int age, @Param("name") String name);
 }

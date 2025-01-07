@@ -11,12 +11,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.dbtest.model.Student;
 import com.example.dbtest.repository.StudentRepository;
+import com.example.dbtest.service.StudentService;
 
 
 @Controller
 public class UserController {
 
     @Autowired StudentRepository studentRepository;
+    // @Autowired StudentService studentService; 방법 1
+    private StudentService studentService;
+    public UserController(StudentService studentService){
+        this.studentService = studentService;
+    }
 
     @GetMapping("/")
     public String index(Model model){
@@ -46,13 +52,12 @@ public class UserController {
         return "find";
     }
 
-    // @GetMapping("/or")
-    // public String or( Model model){
-    //     List<Student> student = studentRepository.findByAgeOrName(30,"홍길동");
-    //     model.addAttribute("student",student);
-    //     return "or";
-    // }
-
+    @GetMapping("/or")
+    public String or( Model model){
+        List<Student> students = studentService.getAgeOrName(31, "홍길동");
+        model.addAttribute("students", students);
+        return "select";
+    }
     @GetMapping("/del")
     @ResponseBody
     public String del( Model model){
